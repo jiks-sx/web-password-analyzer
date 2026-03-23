@@ -6,7 +6,6 @@ import random
 
 app = Flask(__name__)
 
-# Password strength checker
 def check_strength(password):
     score = 0
     if len(password) >= 8: score += 1
@@ -23,7 +22,6 @@ def check_strength(password):
         return "Strong Password", "green"
 
 
-# 🔥 STRONG WORDLIST GENERATOR
 def generate_wordlist(name, birth, pet):
     words = []
 
@@ -35,7 +33,6 @@ def generate_wordlist(name, birth, pet):
 
     base = [name, pet, birth]
 
-    # Basic
     for b in base:
         words.append(b)
         for n in numbers:
@@ -44,7 +41,6 @@ def generate_wordlist(name, birth, pet):
             words.append(b + s)
             words.append(s + b)
 
-    # Advanced combos
     combos = [
         name + birth,
         birth + name,
@@ -60,7 +56,6 @@ def generate_wordlist(name, birth, pet):
                 words.append(c + s + n)
                 words.append(n + s + c)
 
-    # Random mutations
     for _ in range(50):
         word = random.choice(base)
         word += random.choice(symbols)
